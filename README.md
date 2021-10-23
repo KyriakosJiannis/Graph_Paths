@@ -50,21 +50,25 @@ with functionality to search k the nearest node that min this distance for the d
 ```
  - i,j,n,N are the nodes [0, N]
         i is the currect node 
-        j the neiboor nodes, 
+        j the neiboor node in search, 
         n the next path node, 
-        N the final node   
+        N the final node      
  - d(i,j) is the distances between the node i and j
        d(O,N) is the distance betrween started and final node
        d(1,2) is the distance between the node 1 and 2
        d(i,N) is the distance between node i and destination
  - k   [1,N], neibour to search on next step d(ijnn in k,)      
-       
- for each i,  
-     select j from (j in [k-range nodes]
-        where d(i,j)+d(j,N) = min([d(k,N)])
-              n = j
-        if d(n,N) > d(0,N) 
-          go to next j
+ 
+ - exclude nodes j where d(j,N) > d(0,N)       
+ - exclude edges where d(i,j)>d(0,N)
+ --> final Graph G
+ for each i in G,  
+      select j 
+        from j in [k-range nodes] where d(i,j) + d(j,N) = min([d(jk,N)])
+             n = j
+             where d(j,N)+d(ij) < d(jk,N)+d(imjk)
+         go to next j
+         exclude the node j
      do till n = N               
 ```
 
