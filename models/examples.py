@@ -2,7 +2,7 @@ import src.confiq
 import os
 from src.create_data import CreateInputs
 from src.create_charts import plot_2d_network, plot_3d_network
-from src.generate_paths import generates_nearest_neighbor_triangle_route
+from src.generate_paths import nearest_neighbor_triangle_route
 import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,7 +12,7 @@ import imageio
 coords, coords_df = CreateInputs(N=10, space='2d', min_max=100, random_seed=1).generate()
 coords[9, [0, 1]] = [70, -100]
 
-d, routes, edge_distance, total_distance, df = generates_nearest_neighbor_triangle_route(coords, k=1)
+d, routes, edge_distance, total_distance, df = nearest_neighbor_triangle_route(coords, k=1)
 plot_2d_network(coords, output_name='example111', path_to_save=True)
 plot_2d_network(coords, routes, output_name='example112', path_to_save=True)
 
@@ -34,7 +34,7 @@ for ix in range(50, 70, 5):
         for k in [1, 2, 3, 5, 10, None]:
             coords, coords_pd = CreateInputs(N=n, space='2d', min_max=100, random_seed=ix).generate()
             coords = np.vstack([coords, [70, -100]])
-            d, routes, edge_distance, total_distance, df = generates_nearest_neighbor_triangle_route(coords, k=k)
+            d, routes, edge_distance, total_distance, df = nearest_neighbor_triangle_route(coords, k=k)
 
             def k2str(i):
                 if i is None:
@@ -61,11 +61,11 @@ imageio.mimsave('./output/pictures/gif_2d_routes.gif', images, duration = 0.8)
 # snippet
 
 coords, coords_df = CreateInputs(N=100, space='2d', min_max=100, random_seed=1).generate()
-d, routes, edge_distance, total_distance, df = generates_nearest_neighbor_triangle_route(coords, k=1)
+d, routes, edge_distance, total_distance, df = nearest_neighbor_triangle_route(coords, k=1)
 plot_2d_network(coords, routes, output_name='example221', path_to_save=True)
 
 
 coords, coords_df = CreateInputs(N=300, space='3d', min_max=100, random_seed=1).generate()
-d, routes, edge_distance, total_distance, df = generates_nearest_neighbor_triangle_route(coords, k=1)
+d, routes, edge_distance, total_distance, df = nearest_neighbor_triangle_route(coords, k=1)
 plot_3d_network(coords_df, routes, output_name='example221', path_to_save=True)
 plot_3d_network(coords_df, routes)

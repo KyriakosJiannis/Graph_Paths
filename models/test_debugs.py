@@ -14,7 +14,7 @@ import networkx as nx
 import src.confiq
 from src.create_data import CreateInputs
 from src.create_charts import plot_2d_network, plot_3d_network
-from src.generate_paths import generates_nearest_neighbor_triangle_route
+from src.generate_paths import nearest_neighbor_triangle_route
 
 import networkx as nx
 from scipy.spatial import distance
@@ -46,5 +46,5 @@ from scipy.spatial import distance
 
 
 coords, coords_df = CreateInputs(N=100, space='3d', min_max=100, random_seed=1).generate()
-d, routes, edge_distance, total_distance, df = generates_nearest_neighbor_triangle_route(coords, k=1)
+d, routes, edge_distance, total_distance, df = nearest_neighbor_triangle_route(coords, k=1)
 plot_3d_network(coords_df, routes, output_name='example221', path_to_save=True)

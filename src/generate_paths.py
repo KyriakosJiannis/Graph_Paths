@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial import distance
 
 
-def generates_nearest_neighbor_triangle_route(coords, k=None):
+def nearest_neighbor_triangle_route(coords, k=None):
     """
     Nearest Nearest neighbor search based on triange distance
     source is the first row 0 and target is the last

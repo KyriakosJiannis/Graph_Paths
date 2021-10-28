@@ -73,13 +73,14 @@ with functionality to search k the nearest node that min this distance for the d
 ```
 
 ### Implementation in our example with k neighbour search = 1
+
 ```python
 from src.create_data import CreateInputs
 from src.create_charts import plot_2d_network
-from src.generate_paths import generates_nearest_neighbor_triangle_route
+from src.generate_paths import nearest_neighbor_triangle_route
 
 coords, coords_df = CreateInputs(N=500, space='2d', min_max=100, random_seed=1).generate()
-d, routes, edge_distance, Total_distance, df = generates_nearest_neighbor_triangle_route(coords, k=1)
+d, routes, edge_distance, Total_distance, df = nearest_neighbor_triangle_route(coords, k=1)
 plot_2d_network(coords)
 ```
 ![plot](./output/pictures/example112.png)
@@ -94,15 +95,15 @@ A simulation example for different number nodes, seed and K.
 ![](./output/pictures/gif_2d_routes.gif)
 
 
-## Snippet 
+## Snippet
 
 ```python
 from src.create_data import CreateInputs
 from src.create_charts import plot_2d_network, plot_3d_network
-from src.generate_paths import generates_nearest_neighbor_triangle_route
+from src.generate_paths import nearest_neighbor_triangle_route
 
 coords, coords_df = CreateInputs(N=300, space='3d', min_max=100, random_seed=1).generate()
-d, routes, edge_distance, total_distance, df = generates_nearest_neighbor_triangle_route(coords, k=1)
+d, routes, edge_distance, total_distance, df = nearest_neighbor_triangle_route(coords, k=1)
 plot_3d_network(coords_df, routes)
 ```
 ![plot](./output/pictures/example221b.png)
